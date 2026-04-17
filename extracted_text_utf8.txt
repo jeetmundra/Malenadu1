@@ -1,0 +1,298 @@
+﻿Team : beyondminus
+
+| Theme: Predictive Maintenance Agent |
+
+Team Members : Mallikarjun Paroji
+Jeet Mundra
+Vraj Joisar
+Sumanth KS
+
+Problem Statment
+
+Build an Al-powered Predictive Maintenance Agent that connects to live sensor streams
+from industrial machines, detects early warning patterns before failures occur, and
+generates intelligent alerts with clear, human-readable explanations. The system should
+support multi-machine monitoring and optionally automate maintenance scheduling.
+
+The core challenge is that sensor data is noisyΓÇö not every anomaly indicates failure.
+The agent must accurately distinguish real risk signals from transient noise and provide
+trustworthy, explainable decisions.
+
+Proposed Solution
+
+We plproposanl deveopan independent Al maintenance agent that is a Kafka-based system
+can constantly observea st ofng four machines in real-time through live sensor streams and
+fmachine-peedcific dynic baselines. The system ususes a hybrid, multi-model anomaly
+detection lalgoyerithm, whi has a wiato ofth XGBoost/Random Forest detecting compound
+anomalies, Isolation Forest detecting unknown patterns a statistical ngine (Z-
+ioe/hrshods)dentifying spikes and LSTM Autoencode accuratelyr is trained oning of temporal
+behaviour to gidaanttifyd acuratft and sequence analclaalies. A siglsngle risk score is
+calcuategorted to determizene severity as(Low, medium, critical)Onan agent gives loop
+allows priority toation of alerts among the machines. proviThe medium-rik evets will result in
+prompt notifications and a clear reason behindwhee as thevent critical Is bckvnt will initiate.
+lautmatic i escalation isis cmlly autonomous sstem that ca acheved allows precise, scalable
+and real-time predictive maintenance.
+
+┬⌐
+
+Explainable Al
+Autonomous
+decision loop
+
+DATA INPUT LAYER
+
+as
+
+Hira At
+cet
+ryt
+ein
+(0) ΓÇö>Nv ΓÇö
+Live Sveam
+ner ern
+eer (Sse,
+fnveardivecti cen ingon
+noid
+
+System Architecture
+
+@ INTELLIGENCE LAYER
+
+Spike Detector
+(Robust 2:
+sore)
+
+rit Detector
+(EWMA +
+rolling slope)
+
+┬⌐ DASHBOARD
+
+4a DECISION LAYER
+
+@
+
+Nextjs
+Dashbosrd
+{lve readings,
+alerts, history)
+
+PLATFORM
+
+A
+
+POST set
+
+Alert Servioe
++ POST /alert
+
+= ┬Ñ 7+ -@ΓÇö 6 9
+
+Pty Qunm ΓÇö_Cat Mow
+(oan
+L r = ΓÇö persistence)
+lI ag Ai is
+U st] x >
+Hybrid Risk Fault Cassin State Machine
+Engine (ve, Noise (Normal-=Wate Mantenance
+(epievcitiF ΓÇö_confiderce) Suppression P+ Watning-┬╗ Sere
+soore) (N-obM, Critical) * POST
+coeldown)
+
+& VOICE ESCALATION
+
+Twili Eleventabs Engineer
+(outbound eal) Volos Agent (acknowledge!
+(spoken escalate)
+
+explanation)
+
+POST chee
+
+ΓÇÿmarieraroe
+
+Working Pipeline
+
+Data Ingestion Baseline Feature o 62> Fusion & Alert System
+(4 Machines) Learning Engineering ΓÇö Risk Scoring
+~~ Engine Parallel Engine vay
+ih Anomaly Detection |>} =
+[-=- ]-a ΓÇö
+
+a od + ΓÇö = =
+Se XGBoost ΓÇÿ = POST alert
+{GET /stream/{id) | - Lag values | Random Forest }>| Risk Score = ΓÇö J
+ΓÇöΓÇö @ Per-machine (t,t-2) | (compound anomaiies) + 0.5 x RF Score {(@ Dashboard |
+
+GET /history/{id) | baselines Massacre | ┬░ | Ey Dashboard |
+= ΓÇöΓÇö Gucuces @ Rolling stats XGBoost Forest | |p| * 03 * !solation Score (Gane)
+{Live + 7-day data | nee (mean, std) 2┬½z Us J
+ear Ai +30) Oran ofc (compound anomaiies) + 0,2 x Z-score
+tate of change
+
+┬⌐ WMA smoothing
+
+Statistical Engine | | ┬╗| Risk Score =
+(Z-score / thresholds) * 0.5 x RF Score
+
++03 x Isolation Score
+
+*02 x Z-score
++ Rule Boost
+
+v
+
+Y Fusion + Risk
+Scoring Engine
+
+Alert System
+
+(4. Post /atert }
+3. SMS /Cail
+Real-time Streaming Processing
+
+┬ó Continuously ingests multi-machine sensor data via Kafka, ensures fault-tolerant streaming, and analyzes it using
+per-machine dynamic baselines. ΓÇö
+
+> Alert History & Logs
+
+Hybrid Intelligence Analysis
+e Uses Isolation Forest + LSTM Autoencoder to find spikes, drift, and complex anomalies.
+
+Risk-Based Decision & Action
+┬ó Calculates risk scores, categorizes severity, and raises alerts with automatic escalation.
+
+The Agentic Al Agent
+
+Core Capabilities:
+┬ó Smart Al agent monitoring 4 machines in real-time with the help of Kafka-based streaming
+pipelines.
+
+┬ó Intelligently detects with a hybrid multi-model method (XGBoost/Random Forest, Isolation Forest,
+LSTM Autoencoder and statistical engine) and per-machine dynamic baselines.
+
+┬ó Precisely identifies spike, drift, and compound anomalies and categorizes them as Low, Medium,
+and Critical severity levels to make decisions based on priorities.
+
+a Agentic Actions: ΓÇö
+
+e Medium Risk ΓÇö Sends smart notification with plain-English explanation
+┬ó Critical Risk ΓÇö Automatically triggers a voice call; the Agent itself speaks the alert using Eleven
+Labs
+
+{@ INPUT
+(From ML/ Engine)
+
+&R Anomaly
+Score
+|
+z Trend 1 *
+< Data
+
+Machine
+Context
+
+4} ALERT ENGINE
+
+Receive Event
+
+t
+
+Validate & Filter
+(remove noise)
+
+1
+
+ΓÇÿCompute
+Severity
+
+t
+
+Generate Alert
+{type, score, reason}
+
+x
+QO
+Severity
+Check
+
+Smart Alert & Escalation System
+
+(@) ESCALATION Locic
+
+Log Only
+
+Web Dashboard
+Notification
+
+(Q Dashboard
++ In-App Alert
++SMS
+
+Q Dashboard
++ SMS + Call
++ Create Ticket
+
+NOTIFICATION
+SERVICES
+
+Web
+Dashboard
+
+(Next.js)
+
+In-App
+Toast / Bell
+Notification
+
+ΓÇÿSMS
+Gateway
+(Twilio)
+
+Voice Call
+m
+
+Incident
+Ticket
+(PostgreSQL)
+
+ENGINEER
+ACTION
+
+2, he
+ΓÇÿ& Details
+
+Impact
+
+┬½ Reduces maintenance to a proactive approach.Avoids failure through diagnosing
+problems before failure.
+
+┬ó Facilitates early spike, drift, and compound anomaly detection.Gives simple,
+human readable explanations of how to make better decisions.
+
+┬ó Sends priority alerts to all 4 machines at the same time.Makes sure the most
+important matters are handled first.
+
+┬ó Result Enhances operational efficiency and reliability of machines.Minimizes
+downtimes and makes smarter maintenance decisions.
+
+Reference
+
+Research Papers
+┬ó Liu, F. T., et al. (2008). Isolation Forest. IEEE ICDM. https://ieeexplore.ieee.org/document/4781136
+┬ó Malhotra, P., et al. (2016). LSTM-based Encoder-Decoder for Anomaly Detection. arXiv.
+https://arxiv.org/abs/1607.00148
+
+Tools & APIs
+e Twilio Voice & SMS ΓÇö https://twilio.com/docs
+e ElevenLabs Voice Al ΓÇö https://elevenlabs.io/docs
+e Next.js ΓÇö https://nextjs.org/docs
+e FastAPI ΓÇö https://fastapi.tiangolo.com
+e Redis ΓÇö https://redis.io/docs
+eae ┬░ Celery ΓÇö https://docs.celeryq.dev ΓÇöΓÇö
+┬½ PostgreSQL ΓÇö https://postgresq|.org/docs
+
+Industry Insight
+
+Thank You
+
